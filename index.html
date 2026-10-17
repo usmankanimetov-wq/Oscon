@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мырзааким & Амир Аалым — Сүннөт той</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#092e47;--gold:#c9a466;--cream:#fff9ef}
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--cream);color:var(--blue);font-family:Manrope,Arial,sans-serif}
+body.lock{overflow:hidden}
+h1,h2,.fancy{font-family:"Cormorant Garamond",Georgia,serif}
+h2{font-size:clamp(42px,10vw,68px);line-height:1.1;margin:16px 0}
+p{line-height:1.85}
+section{padding:75px 20px;text-align:center}
+.wrap{max-width:680px;margin:auto}
+.label{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--gold)}
+.line{height:1px;width:100px;background:var(--gold);margin:25px auto}
+.btn{background:var(--blue);color:white;border:1px solid var(--gold);padding:17px 24px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block}
+#opening{position:fixed;inset:0;z-index:1000;background:radial-gradient(circle at 50% 35%,#205a79,#041725 80%);color:white;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;overflow:auto;transition:opacity 1s,visibility 1s}
+#opening.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.open-box{max-width:520px;width:100%;border:1px solid #c9a46677;border-radius:220px 220px 8px 8px;padding:50px 12px 30px}
+.open-box h1{font-size:clamp(48px,11vw,80px);color:#f2d6a4;line-height:.95;margin:20px 0}
+.open-box h1 span{display:block;font-size:.65em}
+.garage{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:25px auto;max-width:430px}
+.car{padding:12px 5px;background:linear-gradient(135deg,#213d50,#070f17);border:1px solid #bda16b77;animation:drive 1.4s both}
+.car:nth-child(2){animation-delay:.25s}
+.car:nth-child(3){animation-delay:.5s}
+.car:nth-child(4){animation-delay:.75s}
+.car svg{width:100%;height:65px}
+.car small{display:block;font-size:9px;font-weight:800;color:#f0d9ad}
+@keyframes drive{from{opacity:0;transform:translateX(-110vw)}to{opacity:1;transform:translateX(0)}}
+#start{background:linear-gradient(135deg,#d4af6b,#9c783d);color:white;border:1px solid #f1d8aa;padding:17px 25px;font-weight:800;cursor:pointer}
+#site{opacity:0;transition:opacity 1s}
+#site.visible{opacity:1}
+.hero{min-height:95svh;display:flex;align-items:end;justify-content:center;background:linear-gradient(0deg,#05293cf5,#05293c1a 75%),url("balalar1.jpeg") center/cover;color:white}
+.hero h1{font-size:clamp(53px,12vw,92px);line-height:1;color:#f4dbab}
+.hero h1 span{display:block;font-size:.65em}
+.intro{background:radial-gradient(circle at top,#e3f1f7,transparent 70%),var(--cream)}
+.intro p{font-size:18px}
+.photo{background:#103d5a;color:white;padding:45px 18px}
+.photo img{display:block;width:100%;max-width:650px;max-height:790px;object-fit:contain;margin:auto;border:5px double var(--gold)}
+.photo h2{font-size:37px;color:#f2d9a9}
+.calendar{max-width:440px;margin:25px auto;border:1px solid var(--gold);padding:20px 10px}
+.calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.calgrid span{padding:11px 0;font-weight:700}
+.calgrid .head{color:#a37b40;font-size:12px}
+.calgrid .selected{background:#155576;color:white;border-radius:50%}
+.clock{font:700 78px "Cormorant Garamond",serif;color:#bd9554}
+.dark{background:linear-gradient(135deg,#092d47,#165879);color:white}
+.count{display:grid;grid-template-columns:repeat(4,1fr);margin-top:30px;border-block:1px solid var(--gold)}
+.count>div{padding:20px 2px;border-right:1px solid #ffffff55}
+.count>div:last-child{border:0}
+.count strong{font:700 clamp(34px,8vw,60px) "Cormorant Garamond",serif;color:#f2d8a7;display:block}
+.count small{font-size:10px}
+.location{background:#e8f2f6}
+.rsvp{background:white}
+form{max-width:460px;text-align:left;margin:30px auto}
+label{display:block;margin:18px 0 8px;font-weight:800}
+input[type=text],select{width:100%;padding:16px;background:var(--cream);border:1px solid #bfae90;font-size:16px}
+label.radio{font-weight:600;margin:12px 0}
+label.radio input{accent-color:#155576}
+form button{width:100%;margin-top:20px}
+.note{font-size:12px;color:#6b7379}
+.end{padding-bottom:0}
+.hosts{font:700 clamp(52px,12vw,85px) "Cormorant Garamond",serif;color:#f4d7a3}
+.parents{display:block;width:100%;max-width:680px;margin:35px auto 0;border-top:5px solid var(--gold)}
+footer{text-align:center;padding:24px;background:#031b2b;color:#e7cb9a;font-size:12px;letter-spacing:1px}
+#controls{display:none;position:fixed;right:14px;bottom:18px;z-index:80;flex-direction:column;gap:9px}
+.control{width:55px;height:55px;border-radius:50%;background:#155576;border:1px solid var(--gold);color:#f6dcac;font-size:23px;cursor:pointer}
+.reveal{opacity:0;transform:translateY(25px);transition:.8s}
+.reveal.show{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.car{animation:none}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body class="lock">
+
+<div id="opening">
+<div class="open-box">
+<div class="label">﷽</div>
+<h1>Мырзааким<span>&</span>Амир Аалым</h1>
+<div class="label">СҮННӨТ ТОЙГО ЧАКЫРУУ</div>
+
+<div class="garage">
+<div class="car">
+<svg viewBox="0 0 200 90"><path d="M15 61 L23 34 L50 29 L70 15 L139 15 L161 33 L183 39 L190 62 Z" fill="#080b10" stroke="#aeb5be" stroke-width="2"/><path d="M73 20 L135 20 L152 34 L65 34 Z" fill="#365166"/><circle cx="52" cy="65" r="17" fill="#090909" stroke="#777" stroke-width="5"/><circle cx="155" cy="65" r="17" fill="#090909" stroke="#777" stroke-width="5"/></svg>
+<small>MERCEDES G63 BRABUS</small>
+</div>
+<div class="car">
+<svg viewBox="0 0 200 90"><path d="M10 61 L23 47 L54 42 L78 23 L139 23 L166 42 L186 48 L193 62 Z" fill="#0a0c10" stroke="#aeb5be" stroke-width="2"/><path d="M80 28 L137 28 L154 42 L63 42 Z" fill="#33495d"/><circle cx="51" cy="65" r="17" fill="#090909" stroke="#777" stroke-width="5"/><circle cx="154" cy="65" r="17" fill="#090909" stroke="#777" stroke-width="5"/></svg>
+<small>LAMBORGHINI URUS</small>
+</div>
+<div class="car">
+<svg viewBox="0 0 200 90"><path d="M12 60 L22 34 L57 30 L73 16 L144 16 L164 33 L187 39 L193 62 Z" fill="#090b10" stroke="#c6c0b2" stroke-width="2"/><path d="M76 21 L140 21 L154 34 L64 34 Z" fill="#3d5262"/><circle cx="53" cy="65" r="17" fill="#090909" stroke="#888" stroke-width="5"/><circle cx="157" cy="65" r="17" fill="#090909" stroke="#888" stroke-width="5"/></svg>
+<small>ROLLS-ROYCE CULLINAN</small>
+</div>
+<div class="car">
+<svg viewBox="0 0 200 90"><path d="M7 61 L24 52 L62 45 L88 29 L137 29 L158 45 L187 51 L194 62 Z" fill="#070a0e" stroke="#b4b7ba" stroke-width="2"/><path d="M90 34 L135 34 L149 45 L72 45 Z" fill="#334e63"/><circle cx="49" cy="65" r="16" fill="#080808" stroke="#777" stroke-width="5"/><circle cx="158" cy="65" r="16" fill="#080808" stroke="#777" stroke-width="5"/></svg>
+<small>MERCEDES-AMG GT 63</small>
+</div>
+</div>
+
+<button id="start">✦ ЧАКЫРУУНУ БАШТОО ✦</button>
+<p style="font-size:12px">Басканда музыка ойнойт 🎶</p>
+</div>
+</div>
+
+<audio id="music" preload="auto" loop>
+<source src="Балажаным.mp3" type="audio/mpeg">
+</audio>
+
+<div id="controls">
+<button id="scrollBtn" class="control" aria-label="Жылдыруу">❚❚</button>
+<button id="musicBtn" class="control" aria-label="Музыка">♫</button>
+</div>
+
+<main id="site">
+
+<section class="hero">
+<div class="wrap">
+<div class="label">БИСМИЛЛАХИР-РАХМАНИР-РАХИМ</div>
+<h1>Мырзааким<span>&</span>Амир Аалым</h1>
+<p style="font-weight:800;letter-spacing:2px">СҮННӨТ ТОЙГО ЧАКЫРУУ</p>
+<p>31 • 10 • 2026</p>
+</div>
+</section>
+
+<section class="intro">
+<div class="wrap reveal">
+<div class="label">УРМАТТУУ КОНОКТОР!</div>
+<h2>Сүннөт тойго чакырабыз!</h2>
+<div class="line"></div>
+<p>Сиздерди биздин уулдарыбыз <b>Мырзааким жана Амир Аалымдын</b> сүннөт тоюна чын жүрөктөн чакырабыз!</p>
+<p>Бул күн — үй-бүлөбүз үчүн чоң кубаныч! Сиздердин катышууңуздар жана ак батаңыздар биз үчүн чоң сыймык.</p>
+<p class="fancy" style="font-size:32px">Кубанычыбызга ортоктош болуңуздар!</p>
+</div>
+</section>
+
+<section class="photo">
+<div class="reveal">
+<img src="balalar1.jpeg" alt="Костюмчан үч бала">
+<h2>Биздин сүйүктүү балдарыбыз</h2>
+</div>
+</section>
+
+<section>
+<div class="wrap reveal">
+<div class="label">ӨЗГӨЧӨ КҮН</div>
+<h2>Сүннөт той күнү</h2>
+<div class="line"></div>
+<p><b>31-ОКТЯБРЬ, 2026-ЖЫЛ</b></p>
+<div class="clock">17:00</div>
+<div class="calendar">
+<h3>ОКТЯБРЬ 2026</h3>
+<div class="calgrid" id="cal"></div>
+</div>
+</div>
+</section>
+
+<section class="photo">
+<div class="reveal">
+<img src="IMG_5922.png" alt="Калпакчан үч бала">
+<h2>Ак батаңыздар биз үчүн кымбат</h2>
+</div>
+</section>
+
+<section class="dark">
+<div class="wrap reveal">
+<div class="label">КАЛГАН УБАКЫТ</div>
+<h2>Сүннөт тойго чейин</h2>
+<div class="count">
+<div><strong id="d">00</strong><small>КҮН</small></div>
+<div><strong id="h">00</strong><small>СААТ</small></div>
+<div><strong id="m">00</strong><small>МҮНӨТ</small></div>
+<div><strong id="s">00</strong><small>СЕКУНД</small></div>
+</div>
+</div>
+</section>
+
+<section class="location">
+<div class="wrap reveal">
+<div class="label">СҮННӨТ ТОЙДУН ДАРЕГИ</div>
+<h2>Сиздерди күтөбүз!</h2>
+<div class="line"></div>
+<h2>«Кайнар» банкеттик залы</h2>
+<p><b>Ош шаары</b></p>
+<p>31-октябрь 2026-жыл, саат 17:00</p>
+<a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Кайнар+банкеттик+залы+Ош">📍 КАРТАДАН КӨРҮҮ</a>
+</div>
+</section>
+
+<section class="rsvp" id="rsvp">
+<div class="wrap reveal">
+<div class="label">КОНОКТОРДУН ЖООБУ</div>
+<h2>Сүннөт тойго келесизби?</h2>
+<p>Катышууңуздарды алдын ала билдирип коюңуздар.</p>
+
+<form id="rsvpForm">
+<label for="name">Аты-жөнүңүз</label>
+<input type="text" id="name" placeholder="Аты-жөнүңүздү жазыңыз" required>
+
+<label>Катышасызбы?</label>
+<label class="radio"><input type="radio" name="attend" value="Ооба, барам" required> Ооба, барам</label>
+<label class="radio"><input type="radio" name="attend" value="Бара албайм"> Тилекке каршы, бара албайм</label>
+
+<label for="guests">Канча адам келесиздер?</label>
+<select id="guests">
+<option value="1">1 адам</option>
+<option value="2">2 адам</option>
+<option value="3">3 адам</option>
+<option value="4">4 адам</option>
+<option value="5">5 адам</option>
+<option value="6">6 адам</option>
+<option value="7">7 адам</option>
+<option value="8">8 адам</option>
+<option value="9">9 адам</option>
+<option value="10">10 адам</option>
+</select>
+
+<button class="btn" type="submit">WHATSAPP АРКЫЛУУ ЖООП БЕРҮҮ</button>
+<p class="note">WhatsApp ачылганда алуучуну тандап, билдирүүнү жөнөтөсүз.</p>
+</form>
+</div>
+</section>
+
+<section class="dark end">
+<div class="wrap reveal">
+<div class="label">СИЗДЕРДИ КҮТӨБҮЗ!</div>
+<h2>Келип, ак батаңызды берип кетиңиздер!</h2>
+<div class="line"></div>
+<p>Урматтоо менен,</p>
+<div class="hosts">Назар & Айчүрөк</div>
+<p>Сиздердин катышууңуздар кубанычыбызды толуктайт!</p>
+</div>
+<img class="parents" src="IMG_1697.jpeg" alt="Назар жана Айчүрөк">
+</section>
+
+<footer>МЫРЗААКИМ & АМИР ААЛЫМ • 31.10.2026</footer>
+
+</main>
+
+<script>
+const opening=document.getElementById("opening");
+const site=document.getElementById("site");
+const music=document.getElementById("music");
+const musicBtn=document.getElementById("musicBtn");
+const scrollBtn=document.getElementById("scrollBtn");
+const controls=document.getElementById("controls");
+
+let opened=false;
+let auto=false;
+let frame=null;
+let last=null;
+const SPEED=50;
+
+function stopScroll(){
+ auto=false;
+ last=null;
+ if(frame!==null)cancelAnimationFrame(frame);
+ frame=null;
+ scrollBtn.textContent="▶";
+}
+
+function step(t){
+ if(!auto)return;
+ if(last===null)last=t;
+ const dt=Math.min((t-last)/1000,.1);
+ last=t;
+ const r=document.getElementById("rsvp");
+ if(r.getBoundingClientRect().top<=innerHeight*.65 ||
+ scrollY>=document.documentElement.scrollHeight-innerHeight-1){
+  stopScroll();
+  return;
+ }
+ scrollBy(0,SPEED*dt);
+ frame=requestAnimationFrame(step);
+}
+
+function startScroll(){
+ if(!opened || auto)return;
+ if(document.getElementById("rsvp").getBoundingClientRect().top<=innerHeight*.65)return;
+ auto=true;
+ last=null;
+ scrollBtn.textContent="❚❚";
+ frame=requestAnimationFrame(step);
+}
+
+function playMusic(){
+ music.volume=.8;
+ const p=music.play();
+ if(p)p.catch(()=>{musicBtn.textContent="♪"});
+}
+
+music.addEventListener("play",()=>musicBtn.textContent="♫");
+music.addEventListener("pause",()=>musicBtn.textContent="♪");
+music.addEventListener("error",()=>{
+ musicBtn.textContent="!";
+ musicBtn.title="Балажаным.mp3 файлын текшериңиз";
+});
+
+document.getElementById("start").addEventListener("click",()=>{
+ if(opened)return;
+ opened=true;
+ playMusic();
+ opening.classList.add("hidden");
+ site.classList.add("visible");
+ document.body.classList.remove("lock");
+ controls.style.display="flex";
+ document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+ setTimeout(startScroll,1600);
+});
+
+musicBtn.addEventListener("click",()=>{
+ if(music.paused)playMusic();
+ else music.pause();
+});
+
+scrollBtn.addEventListener("click",()=>{
+ if(auto)stopScroll();
+ else startScroll();
+});
+
+document.addEventListener("touchstart",e=>{
+ if(auto && !e.target.closest("#controls"))stopScroll();
+},{passive:true});
+
+document.addEventListener("wheel",()=>{
+ if(auto)stopScroll();
+},{passive:true});
+
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add("show");
+   observer.unobserve(entry.target);
+  }
+ });
+},{threshold:.1});
+
+const target=new Date("2026-10-31T17:00:00+06:00").getTime();
+
+function countdown(){
+ let n=Math.max(0,target-Date.now());
+ document.getElementById("d").textContent=Math.floor(n/86400000);
+ document.getElementById("h").textContent=String(Math.floor(n/3600000)%24).padStart(2,"0");
+ document.getElementById("m").textContent=String(Math.floor(n/60000)%60).padStart(2,"0");
+ document.getElementById("s").textContent=String(Math.floor(n/1000)%60).padStart(2,"0");
+}
+countdown();
+setInterval(countdown,1000);
+
+const cal=document.getElementById("cal");
+["Дш","Шш","Шр","Бш","Жм","Иш","Жк"].forEach(x=>{
+ cal.innerHTML+='<span class="head">'+x+"</span>";
+});
+for(let i=0;i<3;i++)cal.innerHTML+="<span></span>";
+for(let i=1;i<=31;i++){
+ cal.innerHTML+='<span class="'+(i===31?"selected":"")+'">'+i+"</span>";
+}
+
+document.getElementById("rsvpForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ stopScroll();
+ const name=document.getElementById("name").value.trim();
+ const attend=document.querySelector('input[name="attend"]:checked');
+ if(!name || !attend)return;
+ const count=document.getElementById("guests").value;
+ const message=
+ "Саламатсыздарбы!\n"+
+ "Мырзааким жана Амир Аалымдын сүннөт тоюна жооп:\n"+
+ "Аты-жөнүм: "+name+"\n"+
+ "Катышуум: "+attend.value+"\n"+
+ "Адам саны: "+count;
+ location.href="https://api.whatsapp.com/send?text="+encodeURIComponent(message);
+});
+</script>
+</body>
+</html>
